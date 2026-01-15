@@ -9,6 +9,10 @@ import { Image } from "astro:assets"
     class="m-0 h-full w-full rounded-lg"
     src={import("../assets/band.jpg")}
     alt="Close up of hands playing guitar"
+    layout="constrained"
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
   />
   <div
     class="rounded-lg sm:absolute sm:right-0 sm:bottom-0 sm:left-0 sm:h-1/2 sm:bg-linear-to-t sm:from-black"
