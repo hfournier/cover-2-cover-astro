@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content"
+
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import MainLayout from "../../layouts/MainLayout.astro"
+import Panel from "../../components/Panel.astro"
+import { Image } from "astro:assets"
+import Link from "../../components/Link.astro"
+
+const title = "Blog | Classic Rock Dance Band | Cover2Cover | Kelowna, BC"
+const description = "Learn more about our classic rock band and our new songs, gigs and recordings."
+
+const blogs = await getCollection("blog", ({ data }) => data.publish === true)
+const sortedBlogs = blogs.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<BaseLayout {title} {description}>
+  <MainLayout>
+    <Panel>
+      <h1>Blog</h1>
+
+      <ul class="mt-4 list-none">
+        {
+          sortedBlogs.map((blog) => (
+            <li class="py-4 sm:border-b-2 sm:border-neutral-300 sm:py-5 lg:py-6">
+              <article class="sm:grid-rows-fr-auto lg:grid-rows-auto-fr sm:grid sm:grid-cols-12 sm:gap-x-6 sm:gap-y-4 lg:gap-x-8">
+                {blog.data.photo ? (
+                  <div class="sm:col-span-4 lg:row-span-2">
+                    <Image
+                      class="not-prose aspect-3/2 w-full rounded-lg object-cover shadow-md"
+                      src={blog.data.photo}
+                      alt={blog.data.title}
+                      layout="constrained"
+                      loading="eager"
+                      decoding="async"
+                      fetchpriority="high"
+                    />
+                  </div>
+                ) : (
+                  <div class="sm:col-span-4">&nbsp;</div>
+                )}
+                <div class="sm:col-span-8">
+                  <h2 class="mt-4 mb-2 text-xl font-bold sm:mt-0 md:text-2xl">
+                    <Link href={`/blog/${blog.id}`}>{blog.data.title}</Link>
+                  </h2>
+                  <p class="mb-4 text-sm leading-6 text-neutral-500 sm:mb-0">
+                    <time datetime={blog.data.date.toISOString()}>
+                      {blog.data.date} by {blog.data.author}
+                    </time>
+                  </p>
+                </div>
+                <div class="sm:col-span-full sm:row-start-2 lg:col-span-8 lg:col-start-5">
+                  <p class="prose max-w-full! text-lg">{blog.data.description}</p>
+
+                  <p class="mt-4">
+                    <a href="{{ post.url | url }}" class="c2c-link font-bold">
+                      Read more →
+                    </a>
+                  </p>
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </Panel>
+  </MainLayout>
+</BaseLayout>

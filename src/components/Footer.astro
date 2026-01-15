@@ -1,0 +1,133 @@
+---
+import { getCollection } from "astro:content";
+import FacebookSvg from "../assets/svgs/facebook.svg";
+import InstagramSvg from "../assets/svgs/instagram.svg";
+import YouTubeSvg from "../assets/svgs/youtube.svg";
+
+const navLinks = await getCollection("nav");
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mx-auto max-w-5xl text-center">
+  <div
+    class="rounded-b-2xl border-b-16 border-x-16 border-neutral-800 bg-neutral-700 text-neutral-300"
+  >
+    <div class="rounded-lg border-4 border-neutral-200 pb-4 md:border-8">
+      <div class="grid grid-cols-1 py-4 sm:grid-cols-3">
+        <div class="mb-4 ml-16 text-left sm:mx-auto sm:mb-0">
+          Navigation
+          <ul class="pl-4">
+            <li>
+              <a
+                class:list={[
+                  "text-neutral-50 hover:text-orange-500",
+                  {
+                    "text-orange-400": Astro.url.pathname === "/",
+                  },
+                ]}
+                href="/"
+              >
+                Home
+              </a>
+            </li>
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a
+                    class:list={[
+                      "text-neutral-50 hover:text-orange-500",
+                      {
+                        "text-orange-400":
+                          Astro.url.pathname === link.data.href,
+                      },
+                    ]}
+                    href={link.data.href}
+                  >
+                    {link.data.text}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="mb-4 ml-16 text-left sm:mx-auto sm:mb-0">
+          Related
+          <ul class="pl-4">
+            <li class="py-1">
+              <a
+                class="flex text-neutral-50 hover:text-orange-500"
+                href="https://www.jimrhindress.com/"
+                target="jrguitar"
+              >
+                JR Guitar</a
+              >
+            </li>
+            <li class="py-1">
+              <a
+                class="flex text-neutral-50 hover:text-orange-500"
+                href="https://www.smittenkelowna.com/"
+                target="smitten"
+              >
+                Smitten!</a
+              >
+            </li>
+            <li class="py-1">
+              <a
+                class="flex text-neutral-50 hover:text-orange-500"
+                href="https://www.kelownavoicelab.com/"
+                target="kelownavoicelab"
+              >
+                Kelowna Voice Lab</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="mb-4 ml-16 text-left sm:mx-auto sm:mb-0">
+          Contact
+          <ul class="pl-4">
+            <li
+              class="pb-2 text-neutral-50 hover:text-orange-600 {{ 'text-neutral-200' if path == 'contact' }}"
+            >
+              <a href="/contact">Message Us</a>
+            </li>
+            <li class="pb-2">
+              Call or text (9:00 am - 9:00 pm)<br /><a
+                class="text-neutral-50 hover:text-orange-500"
+                href="tel:+12503175233">250.317.5233</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex items-center justify-center py-4">
+        <a
+          class="px-8 text-neutral-50 hover:text-orange-500"
+          href="https://www.youtube.com/channel/UCJvpZlxA2DWkxSy8dTQ6wzw"
+          target="social"
+        >
+          <YouTubeSvg aria-label="YouTube icon" class="h-8 w-8" />
+        </a>
+        <a
+          class="px-8 text-neutral-50 hover:text-orange-500"
+          href="https://www.facebook.com/cover2coverkelowna"
+          target="social"
+        >
+          <FacebookSvg aria-label="Facebook icon" class="size-8" />
+        </a>
+        <a
+          class="px-8 text-neutral-50 hover:text-orange-600"
+          href="https://www.instagram.com/cover2coverband/"
+          target="social"
+        >
+          <InstagramSvg aria-label="Instagram icon" class="size-8" />
+        </a>
+      </div>
+      <div class="py-4">
+        Cover2Cover specializes in songs from the 60s, 70s, 80s and 90s through
+        today with new material being added all the time.
+      </div>
+      <div class="text-xs">Copyright © Cover2Cover {year}</div>
+    </div>
+  </div>
+</footer>

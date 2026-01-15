@@ -1,0 +1,28 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+type Props = Omit<HTMLAttributes<"input">, "id"> & {
+  error: string
+  id: string
+  label: string
+}
+const { error, id, label, ...attrs } = Astro.props
+---
+
+<div class="relative">
+  <input
+    class="peer h-10 w-full rounded border-2 border-neutral-500 bg-neutral-50 px-3.5 text-stone-900 placeholder-transparent user-valid:border-stone-500 focus:border-neutral-600 focus:outline-none"
+    {id}
+    {...attrs}
+  />
+  <label
+    for={id}
+    class="pointer-events-none absolute -top-2.5 left-2 bg-neutral-50 px-2 text-sm text-stone-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-stone-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-neutral-700"
+    >{label}</label
+  >
+  <div
+    class="invisible pl-2 text-xs text-red-700 peer-required:peer-user-invalid:peer-focus-visible:visible"
+  >
+    {error}
+  </div>
+</div>

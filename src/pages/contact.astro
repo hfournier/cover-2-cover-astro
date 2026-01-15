@@ -1,0 +1,108 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import MainLayout from "../layouts/MainLayout.astro"
+import Panel from "../components/Panel.astro"
+import Link from "../components/Link.astro"
+import InputText from "../components/InputText.astro"
+import InputTextarea from "../components/InputTextarea.astro"
+import Button from "../components/Button.astro"
+
+const title = "Contact info | Classic Rock Dance Band | Cover2Cover | Kelowna, BC"
+const description =
+  "Want to hire our classic rock dance band for your next party, fundraiser or event? Reach out and message us here"
+
+const successMsg = false
+const errorMsg = false
+---
+
+<BaseLayout {title} {description}>
+  <MainLayout>
+    <Panel>
+      <h1>Contact Us</h1>
+      <p>
+        Follow Kelowna's Favourite Classic Rock Dance Band on
+        <Link href="https://www.facebook.com/cover2coverkelowna" target="social">Facebook</Link>
+        or
+        <Link href="https://www.instagram.com/cover2coverband/" target="social"
+          >Instagram @Cover2CoverKelowna</Link
+        >
+        to see latest pics, news and videos.
+      </p>
+      <p>
+        Have a question? Want to book a professional rock band for your next party or event? Call
+        <Link href="tel:+12503175233">250.317.5233</Link>
+        (between 9:00 am and 9:00 pm) or use the form below to message us. We will respond within 24 hours.
+      </p>
+    </Panel>
+    <Panel class="flex justify-center">
+      <form
+        class="w-full space-y-4 rounded-lg border-2 border-neutral-400 p-5 text-left sm:w-1/2 lg:p-10"
+      >
+        <InputText
+          type="text"
+          id="username"
+          name="username"
+          placeholder=""
+          required
+          aria-required="true"
+          label="Username"
+          error="Username is required"
+        />
+        <InputText
+          type="email"
+          id="email"
+          name="email"
+          placeholder=""
+          required
+          aria-required="true"
+          label="Email"
+          error="Email is required"
+        />
+        <InputText
+          type="text"
+          id="subject"
+          name="subject"
+          placeholder=""
+          required
+          aria-required="true"
+          label="Subject"
+          error="Subject is required"
+        />
+        <InputTextarea
+          id="message"
+          name="message"
+          placeholder=""
+          rows="4"
+          required
+          aria-required="true"
+          label="Message"
+          error="Message is required"
+        />
+        <div class="flex items-center gap-4">
+          <Button type="submit">Send Message</Button>
+          <Button type="reset" variant="outline">Clear</Button>
+        </div>
+        <div
+          class:list={[
+            "firefox:bg-opacity-90 bg-opacity-30 fixed top-0 left-1/2 z-10 max-w-sm -translate-x-1/2 -translate-y-80 transform rounded-2xl border-2 border-solid border-transparent bg-white bg-clip-padding p-4 text-center opacity-0 shadow-lg backdrop-blur backdrop-filter transition-all duration-500 ease-in-out",
+            {
+              "translate-y-80 opacity-100": successMsg
+            }
+          ]}
+        >
+          Your message was sent successfully.<br />We'll be in touch ASAP.
+        </div>
+        <div
+          class:list={[
+            "firefox:bg-opacity-90 bg-opacity-60 fixed top-0 left-1/2 z-10 max-w-sm -translate-x-1/2 -translate-y-80 transform rounded-2xl border border-solid border-transparent bg-red-700 bg-clip-padding p-4 text-center text-white opacity-0 shadow-lg backdrop-blur backdrop-filter transition-all duration-500 ease-in-out",
+            {
+              "translate-y-80 opacity-100": errorMsg
+            }
+          ]}
+        >
+          Something went wrong.<br />Please try again later.
+        </div>
+      </form>
+    </Panel>
+  </MainLayout>
+</BaseLayout>

@@ -1,16 +1,101 @@
 ---
+import BriefcaseSvg from "../assets/svgs/briefcase-variant.svg"
+import CakeSvg from "../assets/svgs/cake-variant.svg"
+import CalendarSvg from "../assets/svgs/calendar.svg"
+import GuitarPickSvg from "../assets/svgs/guitar-pick.svg"
+import BaseLayout from "../layouts/BaseLayout.astro"
+import MainLayout from "../layouts/MainLayout.astro"
+import Panel from "../components/Panel.astro"
+import Hero from "../components/Hero.astro"
+import ButtonLink from "../components/ButtonLink.astro"
 
+const title = "Cover2Cover | Classic Rock Band | Dance Band | Kelowna, BC"
+const description =
+  "Classic Rock Band in Kelowna, BC has 5 accomplished musicians who can play rock music, pop music or country music. Parties, events, fundraisers or shows"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout {title} {description}>
+  <Hero />
+  <MainLayout>
+    <Panel>
+      <p class="my-0! py-8 text-center sm:px-12 md:px-24 md:py-12 md:text-lg">
+        <strong>Cover2Cover</strong> is a high energy classic rock dance band with five members who take
+        turns fronting songs and tight harmonies that recreate some of the most challenging songs rock
+        has to offer. When you hire <strong>Cover2Cover</strong> for your party or event, you can be count
+        on people dancing all night long!
+      </p>
+      <div class="mb-12 grid grid-cols-1 px-8 py-4 sm:grid-cols-3 sm:gap-8">
+        <div class="mb-16 text-center sm:mx-auto sm:mb-0">
+          <h2 class="m-4">Events</h2>
+          <div class="grid place-items-center [grid-template-areas:'stack']">
+            <GuitarPickSvg
+              class="h-24 text-neutral-800 [grid-area:stack]"
+              aria-label="Guitar pick background for icon"
+            />
+            <CalendarSvg
+              class="size-8 text-neutral-50 [grid-area:stack]"
+              aria-label="Event calendar icon"
+            />
+          </div>
+          <p>Summer concerts, Kelowna Parks Alive, wineries or any other rocking venues</p>
+          <ButtonLink href="/contact" variant="outline">Events</ButtonLink>
+        </div>
+        <div class="relative mb-16 text-center sm:mx-auto sm:mb-0">
+          <h2 class="m-4">Corporate</h2>
+          <div class="grid place-items-center [grid-template-areas:'stack']">
+            <GuitarPickSvg
+              class="h-24 text-neutral-800 [grid-area:stack]"
+              aria-label="Guitar pick background for icon"
+            />
+            <BriefcaseSvg
+              class="size-8 text-neutral-50 [grid-area:stack]"
+              aria-label="Briefcase icon"
+            />
+          </div>
+          <p>Corporate events don't have to be dull and boring. We'll guarantee it rocks!</p>
+          <ButtonLink href="/contact" variant="outline">Corporate</ButtonLink>
+        </div>
+        <div class="relative mb-4 text-center sm:mx-auto sm:mb-0">
+          <h2 class="m-4">Private</h2>
+          <div class="grid place-items-center [grid-template-areas:'stack']">
+            <GuitarPickSvg
+              class="h-24 text-neutral-800 [grid-area:stack]"
+              aria-label="Guitar pick background for icon"
+            />
+            <CakeSvg
+              class="size-8 text-neutral-50 [grid-area:stack]"
+              aria-label="Birthday cake icon"
+            />
+          </div>
+          <p>Anniversaries, birthdays or weddings... we'll keep everyone dancing all night long</p>
+          <ButtonLink href="/contact" variant="outline">Private</ButtonLink>
+        </div>
+      </div>
+      <p>
+        <strong>Cover2Cover</strong> is a 5-piece classic rock dance band created in 2010 by Kelowna luthier
+        and sought after guitarist Jim Rhindress. Jim wanted to bring together the very best classic rock
+        musicians in Kelowna. He wanted players who love to play dance music and who are at the top of
+        their game musically. Most importantly, he wanted musicians who are well... just really great
+        people!
+      </p>
+      <p>
+        <strong>Cover2Cover</strong> is composed of four (and sometimes five) committed career musicians
+        in Kelowna, BC: Jim on guitar and vocals, his wife Kim Rhindress on keys and vocals, Robert Vallee
+        on drums and vocals, Cyril Schermann on bass and Mike Mueller on guitar and vocals.
+      </p>
+      <p>
+        <strong>Cover2Cover</strong> and has proven itself to be THE classic rock cover band of choice
+        for events large and small ranging from private parties to large corporate events and fundraiser
+        events like the Golden Plate Canadian Culinary Championships (three years in a row) the Earth,
+        Wind & Fire event for Nature Trust of BC (three years in a row) and 11 years for Parks Alive Kelowna.
+      </p>
+      <p>
+        You might have attended one of the many fundraising events
+        <strong>Cover2Cover</strong>
+        has provided live music for at Ribfest, Rotary Centre, Mission Hall, The Capri Hotel, The Delta
+        Grand or Parkinson Rec Centre. This is the dance band of choice for discerning party planners
+        and fundraising coordinators!
+      </p>
+    </Panel>
+  </MainLayout>
+</BaseLayout>

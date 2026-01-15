@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+type Props = HTMLAttributes<"a"> & {
+  variant?: "primary" | "outline"
+}
+const { class: classList, variant = "primary", ...attrs } = Astro.props as Props
+
+const buttonClasses = {
+  primary: "bg-orange-700 text-neutral-50",
+  outline:
+    "bg-transparent border border-orange-700 text-orange-700 hover:border-transparent hover:text-white"
+}[variant]
+---
+
+<a
+  class:list={[
+    "rounded px-4 py-2 font-semibold uppercase no-underline hover:bg-orange-600",
+    buttonClasses,
+    classList
+  ]}
+  {...attrs}
+>
+  <slot />
+</a>

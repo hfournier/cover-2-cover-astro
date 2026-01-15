@@ -1,0 +1,32 @@
+[
+    {
+        "id": "jim-rhindress",
+        "caption": "Jim Rhindress",
+        "photo": "../assets/bios/jim-rhindress.jpg",
+        "publish": true
+    },
+    {
+        "id": "robert-vallee",
+        "caption": "Robert Vallee",
+        "photo": "../assets/bios/robert-vallee.jpg",
+        "publish": true
+    },
+    {
+        "id": "kim-rhindress",
+        "caption": "Kim Rhindress",
+        "photo": "../assets/bios/kim-rhindress.jpg",
+        "publish": true
+    },
+    {
+        "id": "mike-mueller",
+        "caption": "Mike Mueller",
+        "photo": "../assets/bios/mike-mueller.jpg",
+        "publish": true
+    },
+    {
+        "id": "cyril-schermann",
+        "caption": "Cyril Schermann",
+        "photo": "../assets/bios/cyril-schermann.jpg",
+        "publish": true
+    }
+]

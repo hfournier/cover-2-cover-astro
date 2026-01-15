@@ -1,0 +1,32 @@
+[
+  {
+    "id": "music",
+    "text": "Music",
+    "href": "/music"
+  },
+    {
+        "id": "events",
+        "text": "Events",
+        "href": "/events"
+    },
+    {
+        "id": "about",
+        "text": "About",
+        "href": "/about"
+    },
+    {
+        "id": "blog",
+        "text": "Blog",
+        "href": "/blog"
+    },
+    {
+        "id": "gallery",
+        "text": "Gallery",
+        "href": "/gallery"
+    },
+    {
+        "id": "contact",
+        "text": "Contact",
+        "href": "/contact"
+    }
+]
