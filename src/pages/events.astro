@@ -5,6 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import MainLayout from "../layouts/MainLayout.astro"
 import { Image } from "astro:assets"
 import Link from "../components/Link.astro"
+import ButtonLink from "../components/ButtonLink.astro"
 
 const title = "News | Classic Rock Dance Band | Cover2Cover | Kelowna, BC"
 const description =
@@ -23,9 +24,9 @@ const events = await getCollection("events", ({ data }) => data.publish === true
         {
           events.map((event) => (
             <article class="border-b-2 border-neutral-300 py-8 last:border-b-0 sm:grid sm:auto-rows-min sm:grid-cols-12 sm:gap-6">
-              <div class="sm:aspect-ratio-3-2 mb-4 sm:col-span-3 sm:mb-0 md:col-span-4 lg:col-span-5">
+              <div class="mb-4 sm:col-span-3 sm:mb-0 md:col-span-4 lg:col-span-5">
                 <Image
-                  class="h-full w-full rounded-lg object-cover shadow-md"
+                  class="not-prose aspect-3/2 w-full rounded-lg object-cover shadow-md"
                   src={event.data.photo}
                   alt=""
                 />
@@ -55,13 +56,9 @@ const events = await getCollection("events", ({ data }) => data.publish === true
                 </div>
                 {event.data.ticketUrl && (
                   <div class="pt-2">
-                    <a
-                      class="btn btn-small btn-orange"
-                      href="{{ item.ticketUrl }}"
-                      target="tickets"
-                    >
+                    <ButtonLink href={event.data.ticketUrl} target="tickets">
                       Buy Tickets
-                    </a>
+                    </ButtonLink>
                   </div>
                 )}
               </div>

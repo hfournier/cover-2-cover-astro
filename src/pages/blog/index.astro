@@ -53,9 +53,7 @@ const sortedBlogs = blogs.sort((a, b) => b.data.date.valueOf() - a.data.date.val
                   <p class="prose max-w-full! text-lg">{blog.data.description}</p>
 
                   <p class="mt-4">
-                    <a href="{{ post.url | url }}" class="c2c-link font-bold">
-                      Read more →
-                    </a>
+                    <Link href={`/blog/${blog.id}`}>Read more →</Link>
                   </p>
                 </div>
               </article>
